@@ -1,12 +1,17 @@
+# /// script
+# dependencies = [
+#     "cffi",
+#     "inflection",
+#     "raylib"
+# ]
+# ///
 import asyncio
+
+import pyray as pr
+import platform
 
 
 async def main():
-    import asyncio
-
-    import pyray as pr
-    import platform
-
     pr.init_window(800, 450, "Raylib texture test")
     try:
         platform.window.window_resize()
