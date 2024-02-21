@@ -7,13 +7,14 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
     raylib [shapes] example - Logo Raylib
     
     """
-    from pyray import *
     from raylib.colors import (
         RAYWHITE,
         BLACK,

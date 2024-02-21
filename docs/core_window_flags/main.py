@@ -7,8 +7,9 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
-    from pyray import *
     import pyray
     
     # Initialization

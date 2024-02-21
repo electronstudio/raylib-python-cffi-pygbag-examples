@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -14,13 +16,6 @@ async def main():
     
     """
     import pyray
-    from raylib.colors import (
-        RAYWHITE,
-        GRAY,
-        LIGHTGRAY,
-        MAROON,
-    )
-    
     
     
     
@@ -46,14 +41,14 @@ async def main():
         # Draw
         pyray.begin_drawing()
     
-        pyray.clear_background(RAYWHITE)
+        pyray.clear_background(pyray.RAYWHITE)
     
-        pyray.draw_rectangle(SCREEN_WIDTH // 2 - 40, box_position_y, 80, 80, MAROON)
+        pyray.draw_rectangle(SCREEN_WIDTH // 2 - 40, box_position_y, 80, 80, pyray.MAROON)
     
         pyray.draw_text('User mouse wheel to move the cube up and down!',
-                        10, 10, 20, GRAY)
+                        10, 10, 20, pyray.GRAY)
         pyray.draw_text('Box position Y: {:03d}'.format(box_position_y),
-                        10, 40, 20, LIGHTGRAY)
+                        10, 40, 20, pyray.LIGHTGRAY)
     
         pyray.end_drawing()
         await asyncio.sleep(0)

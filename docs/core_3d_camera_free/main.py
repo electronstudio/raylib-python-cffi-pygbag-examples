@@ -7,10 +7,9 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
-    from raylib import Fade
-    import pyray
-    from pyray import *
     
     # Initialization
     screenWidth = 800
@@ -25,7 +24,7 @@ async def main():
     camera.target = Vector3(0.0, 0.0, 0.0)       # Camera looking at point
     camera.up = Vector3(0.0, 1.0, 0.0)           # Camera up vector (rotation towards target)
     camera.fovy = 45.0                           # Camera field-of-view Y
-    camera.projection = pyray.CAMERA_PERSPECTIVE       # Camera projection type
+    camera.projection = CameraProjection.CAMERA_PERSPECTIVE       # Camera projection type
     
     cubePosition = Vector3(0.0, 0.0, 0.0)
     
@@ -36,9 +35,9 @@ async def main():
     # Main game loop
     while not window_should_close():   # Detect window close button or ESC key
         # Update
-        update_camera(camera, pyray.CAMERA_FREE)
+        update_camera(camera, CameraMode.CAMERA_FREE)
     
-        if is_key_pressed(pyray.KEY_Z):
+        if is_key_pressed(KEY_Z):
             camera.target = Vector3(0.0, 0.0, 0.0)
     
         # Draw
@@ -55,7 +54,7 @@ async def main():
     
         end_mode_3d()
     
-        draw_rectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5))
+        draw_rectangle(10, 10, 320, 93, fade(SKYBLUE, 0.5))
         draw_rectangle_lines(10, 10, 320, 93, BLUE)
     
         draw_text("Free camera default controls:", 20, 20, 10, BLACK)

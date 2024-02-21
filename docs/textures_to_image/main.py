@@ -7,13 +7,14 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
     raylib [texture] example - To image
     
     """
-    from pyray import *
     from raylib.colors import *
     
     # Initialization

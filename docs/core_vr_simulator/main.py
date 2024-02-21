@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     import pyray
     GLSL_VERSION = 330

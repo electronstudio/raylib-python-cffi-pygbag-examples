@@ -7,18 +7,14 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
     raylib [core] example - random values
     
     """
-    from pyray import *
-    from raylib.colors import (
-        RAYWHITE,
-        MAROON,
-        LIGHTGRAY
-    )
     
     # Initialization
     SCREEN_WIDTH = 800

@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -14,7 +16,6 @@ async def main():
     
     """
     
-    from pyray import *
     from raylib.colors import (
         RAYWHITE,
         BROWN,

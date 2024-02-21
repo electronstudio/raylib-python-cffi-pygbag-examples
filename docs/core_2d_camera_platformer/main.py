@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -16,7 +18,7 @@ async def main():
     from math import sqrt
     
     import pyray
-    from raylib.colors import (
+    from pyray import (
         DARKGRAY,
         RED,
         BLACK,

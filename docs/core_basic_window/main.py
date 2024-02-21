@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -14,14 +16,6 @@ async def main():
     
     """
     import pyray
-    from raylib.colors import (
-        RAYWHITE,
-        LIGHTGRAY,
-    )
-    
-    
-    
-    
     
     # Initialization
     SCREEN_WIDTH = 800
@@ -40,9 +34,9 @@ async def main():
         # Draw
         pyray.begin_drawing()
     
-        pyray.clear_background(RAYWHITE)
+        pyray.clear_background(pyray.RAYWHITE)
         pyray.draw_text(
-            'Congrats! You created your first window!', 190, 200, 20, LIGHTGRAY)
+            'Congrats! You created your first window!', 190, 200, 20, pyray.LIGHTGRAY)
     
         pyray.end_drawing()
         await asyncio.sleep(0)

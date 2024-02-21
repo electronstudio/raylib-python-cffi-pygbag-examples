@@ -7,10 +7,11 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     # Dont use C data structures when we can avoid it.  Makes Pypy slightly faster.
     
-    from raylib import *
     import random
     
     MAX_BUNNIES      =  500000
@@ -107,6 +108,7 @@ async def main():
         DrawFPS(10, 10)
     
         EndDrawing()
+        await asyncio.sleep(0)
         #//----------------------------------------------------------------------------------
     
     

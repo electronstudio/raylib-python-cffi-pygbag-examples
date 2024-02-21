@@ -7,33 +7,15 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
     raylib [core] example - Mouse input
     
     """
-    from pyray import *
-    from raylib.colors import (
-        RAYWHITE,
-        DARKGRAY,
-        MAROON,
-        LIME,
-        DARKBLUE,
-        PURPLE,
-        YELLOW,
-        ORANGE,
-        BEIGE,
-    )
-    from raylib import (
-        MOUSE_BUTTON_LEFT,
-        MOUSE_BUTTON_MIDDLE,
-        MOUSE_BUTTON_RIGHT,
-        MOUSE_BUTTON_SIDE,
-        MOUSE_BUTTON_EXTRA,
-        MOUSE_BUTTON_FORWARD,
-        MOUSE_BUTTON_BACK
-    )
+    
     
     # Initialization
     SCREEN_WIDTH = 800

@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     # /*******************************************************************************************
     # *
@@ -19,7 +21,6 @@ async def main():
     # *
     # ********************************************************************************************/
     
-    from raylib import *
     MAX_BUNNIES      =  500000
     
     # This is the maximum amount of elements (quads) per batch
@@ -108,6 +109,7 @@ async def main():
         DrawFPS(10, 10)
     
         EndDrawing()
+        await asyncio.sleep(0)
         #//----------------------------------------------------------------------------------
     
     

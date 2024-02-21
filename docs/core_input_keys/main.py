@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -14,13 +16,6 @@ async def main():
     
     """
     import pyray
-    from raylib.colors import (
-        RAYWHITE,
-        DARKGRAY,
-        MAROON,
-    )
-    
-    
     
     
     # Initialization
@@ -49,9 +44,9 @@ async def main():
         # Draw
         pyray.begin_drawing()
     
-        pyray.clear_background(RAYWHITE)
-        pyray.draw_text('move the ball with arrow keys', 10, 10, 20, DARKGRAY)
-        pyray.draw_circle_v(ball_position, 50, MAROON)
+        pyray.clear_background(pyray.RAYWHITE)
+        pyray.draw_text('move the ball with arrow keys', 10, 10, 20, pyray.DARKGRAY)
+        pyray.draw_circle_v(ball_position, 50, pyray.MAROON)
     
         pyray.end_drawing()
         await asyncio.sleep(0)

@@ -7,6 +7,8 @@
 # ///
 import asyncio
 import platform
+from raylib import *
+from pyray import *
 async def main():
     """
     
@@ -14,14 +16,6 @@ async def main():
     
     """
     
-    from pyray import *
-    
-    from raylib import (
-        KEY_W,
-        KEY_S,
-        KEY_UP,
-        KEY_DOWN,
-    )
     
     cameraPlayer1 = Camera3D([0])
     cameraPlayer2 = Camera3D([0])
