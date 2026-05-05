@@ -26,15 +26,14 @@ async def main():
     
     camera = pyray.Camera2D()
     
-    camera = pyray.Camera2D()
     camera.zoom = 1.0
     
-    pyray.set_target_fps(60); 
+    pyray.set_target_fps(60)
     
     # main game loop
     while not pyray.window_should_close():   
         # update
-        if pyray.is_mouse_button_down(pyray.MOUSE_BUTTON_RIGHT):
+        if pyray.is_mouse_button_down(pyray.MouseButton.MOUSE_BUTTON_RIGHT):
             delta = pyray.get_mouse_delta()
             delta = pyray.vector2_scale(delta, -1.0 / camera.zoom)
             camera.target = pyray.vector2_add(camera.target, delta)
@@ -71,7 +70,7 @@ async def main():
                 
         pyray.end_mode_2d()
     
-        pyray.draw_text("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, pyray.WHITE);
+        pyray.draw_text("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, pyray.WHITE)
         
         pyray.end_drawing()
         await asyncio.sleep(0)

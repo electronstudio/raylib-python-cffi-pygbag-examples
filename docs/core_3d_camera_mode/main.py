@@ -53,7 +53,7 @@ async def main():
     
         pyray.end_mode_3d()
     
-        pyray.draw_text("Welcome to the third dimension!", 10, 40, 20, pyray.DARKGRAY);
+        pyray.draw_text("Welcome to the third dimension!", 10, 40, 20, pyray.DARKGRAY)
     
         pyray.draw_fps(10, 10)
     

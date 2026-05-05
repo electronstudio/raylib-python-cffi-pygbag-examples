@@ -24,7 +24,7 @@ async def main():
     init_window(SCREEN_WIDTH, SCREEN_HEIGHT, "raylib [core] example - window should close")
     platform.window.window_resize()
     
-    set_exit_key(KEY_NULL)  # Disable KEY_ESCAPE to close window, X-button still works
+    set_exit_key(KeyboardKey.KEY_NULL)  # Disable KEY_ESCAPE to close window, X-button still works
     
     exitWindowRequested = False  # Flag to request window to exit
     exitWindow = False  # Flag to set window to exit
@@ -38,7 +38,7 @@ async def main():
         # Update
         # ----------------------------------------------------------------------------------
         #  Detect if X-button or KEY_ESCAPE have been pressed to close window
-        if window_should_close() or is_key_pressed(KEY_ESCAPE):
+        if window_should_close() or is_key_pressed(KeyboardKey.KEY_ESCAPE):
             exitWindowRequested = True
     
         if exitWindowRequested:
@@ -46,9 +46,9 @@ async def main():
             # A request for close window has been issued, we can save data before closing
             # or just show a message asking for confirmation
     
-            if is_key_pressed(KEY_Y):
+            if is_key_pressed(KeyboardKey.KEY_Y):
                 exitWindow = True
-            elif is_key_pressed(KEY_N):
+            elif is_key_pressed(KeyboardKey.KEY_N):
                 exitWindowRequested = False
     
         # ----------------------------------------------------------------------------------

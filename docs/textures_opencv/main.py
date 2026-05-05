@@ -10,7 +10,7 @@ import platform
 from raylib import *
 from pyray import *
 async def main():
-    import cv2 as cv
+    import cv2 as cv # type:ignore
     
     opencv_image = cv.imread("resources/raylib_logo.jpg")
     if opencv_image is None:
@@ -22,7 +22,7 @@ async def main():
     platform.window.window_resize()
     
     pointer_to_image_data = ffi.from_buffer(opencv_image.data)
-    raylib_image = Image(pointer_to_image_data, 256, 256, 1, PIXELFORMAT_UNCOMPRESSED_R8G8B8)
+    raylib_image = Image(pointer_to_image_data, 256, 256, 1, PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8)
     texture = load_texture_from_image(raylib_image)
     unload_image(raylib_image)
     

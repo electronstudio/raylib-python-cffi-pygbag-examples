@@ -15,7 +15,6 @@ async def main():
     raylib [texture] example - To image
     
     """
-    from raylib.colors import *
     
     # Initialization
     screenWidth = 800
@@ -51,6 +50,8 @@ async def main():
         begin_drawing()
     
         clear_background(RAYWHITE)
+    
+        texture.width
     
         draw_texture(texture, int(screenWidth/2 - texture.width/2), int(screenHeight/2 - texture.height/2), WHITE)
     

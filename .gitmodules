@@ -1,0 +1,3 @@
+[submodule "raylib-python-cffi"]
+	path = raylib-python-cffi
+	url = https://github.com/electronstudio/raylib-python-cffi

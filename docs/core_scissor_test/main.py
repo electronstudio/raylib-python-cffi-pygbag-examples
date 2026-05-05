@@ -35,7 +35,7 @@ async def main():
     while not window_should_close():  # Detect window close button or ESC key
         # Update
         # ----------------------------------------------------------------------------------
-        if is_key_pressed(KEY_S):
+        if is_key_pressed(KeyboardKey.KEY_S):
             scissorMode = not scissorMode
     
         # Centre the scissor area around the mouse position

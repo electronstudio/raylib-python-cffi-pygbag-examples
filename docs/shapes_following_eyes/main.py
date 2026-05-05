@@ -16,13 +16,7 @@ async def main():
     
     """
     
-    from raylib.colors import (
-        RAYWHITE,
-        BROWN,
-        BLACK,
-        LIGHTGRAY,
-        DARKGREEN,
-    )
+    
     from math import (
         atan2,
         cos,
