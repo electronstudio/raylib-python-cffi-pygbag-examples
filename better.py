@@ -1,5 +1,3 @@
-# Written by AI
-
 import os
 import re
 import shutil
