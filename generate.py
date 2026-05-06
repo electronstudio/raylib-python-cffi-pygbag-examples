@@ -1,6 +1,7 @@
 # Written by AI
 
 import os
+import re
 import shutil
 
 
@@ -73,6 +74,9 @@ for root, dirs, files in os.walk(start_dir):
             file_path = os.path.join(root, file)
             # Get the file name without the extension
             file_name = os.path.splitext(file)[0]
+            # Get the directory name of the file
+            dir_name = os.path.basename(root)
+
             # Create a new directory with the same name as the file in the output directory
             new_dir = os.path.join(output_dir, file_name)
             os.mkdir(new_dir)
@@ -80,42 +84,71 @@ for root, dirs, files in os.walk(start_dir):
             new_file = os.path.join(new_dir, "main.py")
             shutil.copy(file_path, new_file)
             convert(new_file)
-            os.system(f"cp -R examples/textures/resources {new_dir}")
+            print(f"**** cp -R {start_dir}/{dir_name}/resources {new_dir}")
+            os.system(f"cp -R {start_dir}/{dir_name}/resources {new_dir}")
             os.system(
                 "python3 -m pygbag --PYBUILD 3.12 --can_close 1 --ume_block 0 --build "
                 + new_file
             )
             os.system(f"rm -rf {new_dir}/resources")
+            with open(file_path, "r") as f:
+                # Read the text of the file
+                source_code = f.read()
+
+            # Extract screen dimensions from source code
+            width_match = re.search(
+                r"screen[_]?width\s*=\s*(\d+)", source_code, re.IGNORECASE
+            )
+            height_match = re.search(
+                r"screen[_]?height\s*=\s*(\d+)", source_code, re.IGNORECASE
+            )
+
+            screen_width = width_match.group(1) if width_match else "800"
+            screen_height = height_match.group(1) if height_match else "450"
+
+            with open(new_dir + "/index.html", "w") as index_file:
+                index_file.write(
+                    f"""
+                    <html><head>
+                    <title>{file_name}</title></head>
+                    <body>
+                    <h1>{file_name}</h1>
+                    <iframe src="build/web/index.html" width="{screen_width}px" height="{screen_height}px"></iframe>
+                    <p><pre>{source_code}</pre></p>
+                    </body></html>
+                    """
+                )
+
 
 os.system(f"touch {output_dir}/.nojekyll")
 
-# Open the index.html file in write mode
-with open(output_dir + "/index.html", "w") as index_file:
-    # Write the HTML header
-    index_file.write(
-        "<html>\n<head>\n<title>Directory Index</title>\n</head>\n<body>\n"
-    )
+# Write the nav.html file with the list of links
+with open(output_dir + "/nav.html", "w") as nav_file:
+    nav_file.write("<html>\n<head>\n<title>Directory Index</title>\n</head>\n<body>\n")
 
-    # Write the title of the page
-    index_file.write("<h1>Directory Index</h1>\n")
+    nav_file.write("<h1>Examples</h1>\n")
 
-    # Write the list of subdirectories
-    index_file.write("<ul>\n")
+    nav_file.write("<ul>\n")
     sub_dirs = os.listdir(output_dir)
 
     # Sort the list of subdirectories in alphabetical order
     sub_dirs.sort()
 
-    # Loop through the sorted subdirectories
     for sub_dir in sub_dirs:
-        # Check if the subdirectory is a directory
         if os.path.isdir(os.path.join(output_dir, sub_dir)):
-            # Write the subdirectory name and the link to frank.html
-            index_file.write(f"<li><a href='{sub_dir}/build/web'>{sub_dir}</a>")
-            # - <a href='{sub_dir}/main.py'>code</a></li>\n")
+            nav_file.write(
+                f"<li><a href='{sub_dir}/index.html' target='right'>{sub_dir}</a></li>\n"
+            )
 
-    # Close the list tag
-    index_file.write("</ul>\n")
+    nav_file.write("</ul>\n")
 
-    # Write the HTML footer
-    index_file.write("</body>\n</html>\n")
+    nav_file.write("</body>\n</html>\n")
+
+# Write the index.html file as a frameset
+with open(output_dir + "/index.html", "w") as index_file:
+    index_file.write("<html>\n<head>\n<title>Directory Index</title>\n</head>\n")
+    index_file.write("<frameset cols='250,*'>\n")
+    index_file.write("    <frame src='nav.html' name='left'>\n")
+    index_file.write("    <frame name='right'>\n")
+    index_file.write("</frameset>\n")
+    index_file.write("</html>\n")
